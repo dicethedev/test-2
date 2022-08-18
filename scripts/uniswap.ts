@@ -6,40 +6,38 @@ async function main() {
     const DAIAddress = "0x6B175474E89094C44Da98b954EedeAC495271d0F";
     const UNI_Router  = "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D";
 
-    //amounts to be used in swapping aave token to dai
+    //amounts to be used in swapping bnb token to dai
     const amountOutMin = 2e6;
     const amountIn = 3e6;
 
-    //amounts to be used in adding liquidity btw aave and dai
     const amountADesired = 100;
     const amountBDesired = 100;
     const amountAMin = 1;
     const amountBMin = 1;
     const epochTime = 1661108545;
-    //im
+
     const helpers = require("@nomicfoundation/hardhat-network-helpers");
     const HolderTokens = "0xf584f8728b874a6a5c7a8d4d387c9aae9172d621";
     await helpers.impersonateAccount(HolderTokens);
     const impersonatedSigner = await ethers.getSigner(HolderTokens);
 
-
-    //aave contract initialization
-    const Aave = await ethers.getContractAt(
+     const BNB = await ethers.getContractAt(
         "IERC20",
         BNBAddress,
         impersonatedSigner
     );
 
-
-    //dai contract initialization
     const DAI = await ethers.getContractAt("IERC20", DAIAddress);
 
-    //uniswap router initialization
     const ROUTER = await ethers.getContractAt(
-        "IUniswapV2Router02",
-        UNI_Router,
+        "IUniswap",
+        IUniswap,
         impersonatedSigner
     );
+
+
+    await BNB.approve(IUniswap  "99981199999990000000");
+    await DAI.approve(IUniswap , "2144000000001027479345");
 
     await ROUTER.swapExactTokensForTokens(
         amountIn,
@@ -50,7 +48,7 @@ async function main() {
     );
     console.log("Swapped Tokens");
 
-    const bnbBalAfter = await Aave.balanceOf(impersonatedSigner.address);
+    const bnbBalAfter = await BNB.balanceOf(impersonatedSigner.address);
     const daiBalAfter = await DAI.balanceOf(impersonatedSigner.address);
 
     console.log("balance after swap:", bnbBalAfter.toString(), daiBalAfter.toString());

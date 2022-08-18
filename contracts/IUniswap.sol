@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-interface IUniswapV2Router02 {
+interface IUniswap {
    
     function swapExactTokensForTokens(
         uint256 amountIn,
