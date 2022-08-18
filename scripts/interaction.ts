@@ -12,7 +12,7 @@ const main = async () => {
     let wallet = new ethers.Wallet(provider.PrivateKey, provider2);
     const _value = ethers.utils.parseEther("0.01");
 
-    const CONTRACTADDRESS = "0xab7495b027D1EdCc66e6C8A6903bB1Afe1Be7502";
+    const CONTRACTADDRESS = "0x44E37A26B1468A9edCb5d1c8e606Ff5b9A883f0F";
     const _vault = await ethers.getContractAt("ITrustFund", CONTRACTADDRESS);
 
     //Add Kid

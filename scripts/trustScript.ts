@@ -14,7 +14,7 @@ async function main() {
   await trust.deployed();
 
 console.log("TrustFund contract deployed to this address: ", trust.address );
-//TrustFund contract deployed to this address:  0xab7495b027D1EdCc66e6C8A6903bB1Afe1Be7502
+//TrustFund contract deployed to this address:  0x44E37A26B1468A9edCb5d1c8e606Ff5b9A883f0F
 //check etherscan with this address above [rospten testnet]
 
 //createGrant is a function in the Vault.sol
