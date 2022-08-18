@@ -18,9 +18,9 @@ async function main() {
     const epochTime = 1661108545;
     //im
     const helpers = require("@nomicfoundation/hardhat-network-helpers");
-    const HolderToken = "0xf584f8728b874a6a5c7a8d4d387c9aae9172d621";
-    await helpers.impersonateAccount(HolderToken);
-    const impersonatedSigner = await ethers.getSigner(HolderToken);
+    const HolderTokens = "0xf584f8728b874a6a5c7a8d4d387c9aae9172d621";
+    await helpers.impersonateAccount(HolderTokens);
+    const impersonatedSigner = await ethers.getSigner(HolderTokens);
 
 
     //aave contract initialization
@@ -45,7 +45,7 @@ async function main() {
         amountIn,
         amountOutMin,
         [BNBAddress, DAIAddress],
-        HolderToken,
+        HolderTokens,
         1960674129
     );
     console.log("Swapped Tokens");
@@ -62,7 +62,7 @@ async function main() {
         amountBDesired,
         amountAMin,
         amountBMin,
-        HolderToken,
+        HolderTokens,
         epochTime,
         { gasLimit: ethers.utils.hexlify(1000000) }
     );
